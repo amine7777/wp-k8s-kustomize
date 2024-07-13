@@ -13,14 +13,14 @@ spec:
     metadata:
       name: '{{name}}-applications'
     spec:
-      project: default
+      project: dev-project
       source:
         repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
         targetRevision: HEAD
         path: app-of-apps/overlays/dev
       destination:
         server: 'https://dev-cluster.default.svc'
-        namespace: default
+        namespace: my-app-ns
       syncPolicy:
         automated:
           prune: true

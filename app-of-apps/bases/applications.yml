@@ -3,14 +3,14 @@ kind: Application
 metadata:
   name: app-of-apps
 spec:
-  project: default
+  project: dev-project
   source:
     repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
     targetRevision: HEAD
     path: apps/overlays/dev
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: default
+    namespace: my-app-ns
   syncPolicy:
     automated:
       prune: true
