@@ -20,7 +20,7 @@ spec:
         targetRevision: HEAD
         path: app-of-apps/overlays/dev
       destination:
-        server: 'https://dev-cluster.default.svc'
+        server: 'https://kubernetes.default.svc'
         namespace: my-app-ns
       syncPolicy:
         automated:

@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app1
-  namespace: my-app-ns
+  namespace: argocd
 spec:
   project: default
   source:
@@ -10,8 +10,8 @@ spec:
     targetRevision: HEAD
     path: apps/overlays/dev
   destination:
-    server: 'https://cluster.default.svc'
-    namespace: my-app-ns
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
