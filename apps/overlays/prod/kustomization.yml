@@ -1,3 +1,0 @@
-resources:
-  - ../../bases/mysql/mysql.yml
-  - ../../bases/wordpress/wordpress.yml
