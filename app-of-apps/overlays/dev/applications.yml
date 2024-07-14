@@ -10,7 +10,7 @@ spec:
     targetRevision: HEAD
     path: apps/overlays/dev
   destination:
-    server: 'https://dev-cluster.default.svc'
+    server: 'https://cluster.default.svc'
     namespace: my-app-ns
   syncPolicy:
     automated:
