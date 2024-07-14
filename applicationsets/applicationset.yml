@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: my-applicationset
-  namespace: my-app-ns
+  namespace: argocd
 spec:
   generators:
   - git:
@@ -21,7 +21,7 @@ spec:
         path: app-of-apps/overlays/dev
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: my-app-ns
+        namespace: argocd
       syncPolicy:
         automated:
           prune: true
