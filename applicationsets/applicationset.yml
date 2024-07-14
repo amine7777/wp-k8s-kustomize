@@ -12,7 +12,7 @@ spec:
       - path: app-of-apps/overlays/dev
   template:
     metadata:
-      name: '{{name}}-applications'
+      name: 'mami-applications'
     spec:
       project: default
       source:
