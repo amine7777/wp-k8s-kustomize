@@ -61,8 +61,6 @@ spec:
         app: wordpress
         tier: mysql
     spec:
-      nodeSelector:
-        disktype: ssd
       containers:
       - image: mysql:5.6
         name: mysql
