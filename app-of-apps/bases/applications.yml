@@ -2,8 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
+  namespace: my-app-ns
 spec:
-  project: dev-project
+  project: default
   source:
     repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
     targetRevision: HEAD

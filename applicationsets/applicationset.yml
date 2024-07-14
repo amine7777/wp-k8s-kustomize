@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: my-applicationset
+  namespace: my-app-ns
 spec:
   generators:
   - git:
@@ -13,7 +14,7 @@ spec:
     metadata:
       name: '{{name}}-applications'
     spec:
-      project: dev-project
+      project: default
       source:
         repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
         targetRevision: HEAD

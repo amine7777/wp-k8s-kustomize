@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: app1
 spec:
-  project: dev-project
+  project: default
   source:
     repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
     targetRevision: HEAD
