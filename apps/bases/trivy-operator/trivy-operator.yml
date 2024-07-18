@@ -16,7 +16,7 @@ spec:
     targetRevision: 0.24.1
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: trivy-system
   syncPolicy:
     automated:
       prune: true
