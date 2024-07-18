@@ -4,3 +4,4 @@ resources:
   - ../../bases/external-secrets
   - ../../bases/cert-manager
   - ../../bases/trivy-operator
+    - ../../bases/prometheus
