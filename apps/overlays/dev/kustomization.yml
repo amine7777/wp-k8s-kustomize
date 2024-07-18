@@ -2,3 +2,4 @@ resources:
   - ../../bases/mysql
   - ../../bases/wordpress
   - ../../bases/external-secrets
+  - ../../bases/cert-manager
