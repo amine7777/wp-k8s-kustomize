@@ -3,3 +3,4 @@ resources:
   - ../../bases/wordpress
   - ../../bases/external-secrets
   - ../../bases/cert-manager
+  - ../../bases/trivy-operator
