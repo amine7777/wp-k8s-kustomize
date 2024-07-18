@@ -1,8 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: trivy-system
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: trivy-operator
-  namespace: argocd
+  namespace: trivy-system
 spec:
   project: default
   source:
