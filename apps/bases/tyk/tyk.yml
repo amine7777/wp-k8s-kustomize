@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    chart: tyk
-    repoURL: https://helm.tyk.io/public/helm/charts/
+    chart: tyk-helm
+    repoURL: https://helm.tyk.io/public/helm/charts
     targetRevision: 0.18.0
     helm:
       values: |
