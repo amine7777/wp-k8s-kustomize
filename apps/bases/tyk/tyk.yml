@@ -8,7 +8,7 @@ spec:
   source:
     chart: tyk-helm
     repoURL: https://helm.tyk.io/public/helm/charts/
-    targetRevision: tyk
+    targetRevision: 0.14.1
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd
