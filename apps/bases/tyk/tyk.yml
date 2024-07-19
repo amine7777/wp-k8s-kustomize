@@ -6,13 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    chart: tyk-helm
-    repoURL: https://helm.tyk.io/public/helm/charts
+    chart: tyk-operator
+    repoURL: https://helm.tyk.io/public/helm/charts/
     targetRevision: 0.18.0
     helm:
       values: |
         replicaCount: 1
-        
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd
