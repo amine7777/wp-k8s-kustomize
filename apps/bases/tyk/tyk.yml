@@ -8,7 +8,7 @@ spec:
   source:
     chart: tyk-helm
     repoURL: https://helm.tyk.io/public/helm/charts/
-    targetRevision: 0.14.1
+    targetRevision: 0.18.0
     helm:
       values: |
         replicaCount: 1
