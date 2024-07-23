@@ -1,8 +1,9 @@
 resources:
+  - ""
   # - ../../bases/mysql
   # - ../../bases/wordpress
-  - ../../bases/external-secrets
-  - ../../bases/cert-manager
+  # - ../../bases/external-secrets
+  # - ../../bases/cert-manager
   # - ../../bases/trivy-operator
   # - ../../bases/prometheus-community
   # - ../../bases/tyk
