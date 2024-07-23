@@ -5,4 +5,4 @@ resources:
   - ../../bases/cert-manager
   # - ../../bases/trivy-operator
   # - ../../bases/prometheus-community
-  - ../../bases/tyk
+  # - ../../bases/tyk
