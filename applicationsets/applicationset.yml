@@ -15,7 +15,7 @@ spec:
             revision: HEAD
             project: default
             directories:
-              - app-of-apps/overlays/dev
+              - apps/overlays/dev
 
           - cluster: appofapps2
             url: 'https://kubernetes.default.svc'
@@ -23,7 +23,7 @@ spec:
             revision: HEAD
             project: default
             directories:
-              - app-of-apps/overlays/prod
+              - apps/overlays/prod
   template:
     metadata:
       name: '{{ .cluster }}-appy'
