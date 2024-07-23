@@ -41,11 +41,7 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-          - Validate=false
           - CreateNamespace=true
-          - PrunePropagationPolicy=foreground
-          - PruneLast=true
-          - RespectIgnoreDifferences=true
         retry:
           limit: 10
           backoff:
