@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tyk
-  namespace: argocd
+  namespace: system
 spec:
   project: default
   source:
@@ -14,7 +14,8 @@ spec:
         replicaCount: 1
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: system
+    createNamespace: true
   syncPolicy:
     automated:
       prune: true
