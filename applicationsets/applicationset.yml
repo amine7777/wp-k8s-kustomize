@@ -4,25 +4,40 @@ metadata:
   name: my-applicationset
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
-  - git:
-      repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-      revision: HEAD
-      directories:
-      - path: app-of-apps/overlays/dev
+    - list:
+        elements:
+          - cluster: appofapps1
+            url: 'https://kubernetes.default.svc'
+            repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+            revision: HEAD
+            project: default
+            directories:
+              - app-of-apps/overlays/dev
+
+          - cluster: appofapps2
+            url: 'https://kubernetes.default.svc'
+            repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+            revision: HEAD
+            project: default
+            directories:
+              - app-of-apps/overlays/prod
   template:
     metadata:
-      name: 'mami-applications'
+      name: '{{ .cluster }}-appy'
     spec:
-      project: default
+      project: "{{ .project }}"
       source:
-        repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-        targetRevision: HEAD
-        path: app-of-apps/overlays/dev
+        repoURL: "{{ .repoURL }}"
+        targetRevision: "{{ .revision }}"
+        path: "{{ index .directories 0 }}"
       destination:
-        server: 'https://kubernetes.default.svc'
+        server: "{{ .url }}"
         namespace: argocd
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
+
