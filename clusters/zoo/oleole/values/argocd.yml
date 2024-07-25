@@ -1,12 +1,23 @@
 configs:
+  styles: |
+    .sidebar {
+      background: linear-gradient(to bottom, #414868, #232336);
+      color: #c0caf5;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    img.sidebar__logo__character {
+       width: 60px !important;
+       content: url("https://user-images.githubusercontent.com/2389292/264784405-1e7e5902-d48f-440d-98f4-44028f4bd90e.png") !important;
+    }
+
   cm:
     create: true
     url: https://localhost:8080/
     accounts.martinhaus: apiKey, login
     oidc.config: |
       name: AzureAD
-      issuer: "https://login.microsoftonline.com/$argocd-oidc-secrets:oidc.azure.tenantID/v2.0"
-      clientID: $argocd-oidc-secrets:oidc.azure.clientID
+      issuer: https://login.microsoftonline.com/596b10c9-eb4d-49d8-954b-a9a1ca4b5750/v2.0
+      clientID: 455f54e4-9665-4b69-85b1-640ebd2e08c0
       clientSecret: $argocd-oidc-secrets:oidc.azure.clientSecret
       requestedIDTokenClaims:
         groups:
@@ -18,10 +29,10 @@ configs:
         - profile
         - email
 
-    rbac:
-        create: true
-        policy.default: role:readonly
-        policy.csv: |
-          p, role:org-admin, applications, *, */*, allow
-          g, '$argocd-oidc-secrets:oidc.azure.groupObjectID' , role:org-admin
+  rbac:
+      create: true
+      policy.default: role:readonly
+      policy.csv: |
+        p, role:org-admin, applications, *, */*, allow
+        g, 'e32d0fb2-2248-4f40-97bf-5aa48bd5c423' , role:org-admin
 

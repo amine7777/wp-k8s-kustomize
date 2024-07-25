@@ -19,15 +19,15 @@ spec:
             project: core
             namespace: argocd
 
-          # - app: cert-manager
-          #   tenant: zoo
-          #   env: oleole
-          #   url: 'https://kubernetes.default.svc'
-          #   chart: cert-manager
-          #   repoURL: 'https://charts.jetstack.io'
-          #   targetRevision: 1.15.1
-          #   project: core
-          #   namespace: system
+          - app: cert-manager
+            tenant: zoo
+            env: oleole
+            url: 'https://kubernetes.default.svc'
+            chart: cert-manager
+            repoURL: 'https://charts.jetstack.io'
+            targetRevision: 1.15.1
+            project: core
+            namespace: system
   template:
     metadata:
       name: "{{ .app }}"
@@ -43,7 +43,7 @@ spec:
           targetRevision: "{{ .targetRevision }}"
           helm:
             valueFiles:
-              - $values/clusters/{{ .tenant /{{ .env }}/values/{{ .app }}.yml
+              - '$values/clusters/{{ .tenant }}/{{ .env }}/values/{{ .app }}.yml'
       destination:
         server: "{{ .url }}"
         namespace: "{{ .namespace }}"
