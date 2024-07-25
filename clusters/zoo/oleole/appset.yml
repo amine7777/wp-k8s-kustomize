@@ -30,20 +30,19 @@ spec:
             namespace: system
   template:
     metadata:
-      name: "{{ .app }}-{{ env }}"
+      name: "{{ .app }}-{{ .env }}"
     spec:
       project: "{{ .project }}"
       source:
         chart: "{{ .chart }}"
         repoURL: "{{ .repoURL }}"
-        targetRevision: "{{ .targetrevision }}"
-        path: "{{ index .directories 0 }}"
+        targetRevision: "{{ .targetRevision }}"
         helm:
           valueFiles:
             - "clusters/{{ .tenant }}/{{ .env }}/values/{{ .app }}.yml"
       destination:
         server: "{{ .url }}"
-        namespace: "{{ namespace }}"
+        namespace: "{{ .namespace }}"
       syncPolicy:
         automated:
           prune: true

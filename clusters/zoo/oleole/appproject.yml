@@ -1,12 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: oleole-project
+  name: core
   namespace: argocd
 spec:
   description: Development Project OleOle
   sourceRepos:
     - 'https://github.com/amine7777/wp-k8s-kustomize.git'
+    - 'https://argoproj.github.io/argo-helm'
+    - 'https://charts.jetstack.io'
   destinations:
     - namespace: '*'
       server: '*'
