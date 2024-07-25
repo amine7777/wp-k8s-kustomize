@@ -36,7 +36,6 @@ spec:
       sources:
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
-          path: "clusters/zoo/oleole/values"
           ref: values
       
         - repoURL: "{{ .repoURL }}"
@@ -44,7 +43,7 @@ spec:
           targetRevision: "{{ .targetRevision }}"
           helm:
             valueFiles:
-              - '\$values/cert-manager.yml'
+              - $values/clusters/zoo/oleole/values/cert-manager.yml
       destination:
         server: "{{ .url }}"
         namespace: "{{ .namespace }}"
