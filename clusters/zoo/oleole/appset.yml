@@ -39,7 +39,7 @@ spec:
         targetRevision: "{{ .targetrevision }}"
         path: "{{ index .directories 0 }}"
         helm:
-          valuesFrom: 
+          valueFiles:
             - "clusters/{{ .tenant }}/{{ .env }}/values/{{ .app }}.yml"
       destination:
         server: "{{ .url }}"

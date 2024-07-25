@@ -1,3 +1,11 @@
 crds:
   # -- Install and upgrade CRDs
   install: false
+
+configs:
+  # General Argo CD configuration
+  ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+  cm:
+    # -- Create the argocd-cm configmap for [declarative setup]
+    create: true
+    application.instanceLabelKey: argocd.argoproj.io/instance
