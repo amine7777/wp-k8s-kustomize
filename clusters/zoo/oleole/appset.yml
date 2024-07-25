@@ -43,7 +43,7 @@ spec:
           targetRevision: "{{ .targetRevision }}"
           helm:
             valueFiles:
-              - $values/clusters/zoo/oleole/values/cert-manager.yml
+              - $values/clusters/zoo/oleole/values/{{ .app }}.yml
       destination:
         server: "{{ .url }}"
         namespace: "{{ .namespace }}"
