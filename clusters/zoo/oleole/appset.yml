@@ -36,7 +36,7 @@ spec:
       sources:
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
-          path: clusters/{{ .tenant }}/{{ .env }}/values
+          path: "clusters/{{ .tenant }}/{{ .env }}/values"
           ref: mytenantvalues
       
         - repoURL: "{{ .repoURL }}"
