@@ -44,7 +44,7 @@ spec:
           targetRevision: "{{ .targetRevision }}"
           helm:
             valueFiles:
-              - $mytenantvalues/{{ .app }}.yml"
+              - $mytenantvalues/"{{ .app }}".yml
       destination:
         server: "{{ .url }}"
         namespace: "{{ .namespace }}"
