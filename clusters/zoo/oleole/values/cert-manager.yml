@@ -1,0 +1,4 @@
+# CERT-MANAGER VALUES
+replicaCount: 1
+crds:
+  enabled: true

@@ -1,0 +1,3 @@
+crds:
+  # -- Install and upgrade CRDs
+  install: false

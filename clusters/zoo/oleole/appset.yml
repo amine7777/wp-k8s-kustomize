@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: main-oleole
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - list:
+        elements:
+          - app: argocd
+            tenant: zoo
+            env: oleole
+            url: 'https://kubernetes.default.svc'
+            chart: argo-cd
+            repoURL: 'https://argoproj.github.io/argo-helm'
+            targetRevision: 7.3.11
+            project: core
+            namespace: argocd
+
+          - app: cert-manager
+            tenant: zoo
+            env: oleole
+            url: 'https://kubernetes.default.svc'
+            chart: cert-manager
+            repoURL: 'https://charts.jetstack.io'
+            targetRevision: 1.15.1
+            project: core
+            namespace: system
+  template:
+    metadata:
+      name: "{{ .app }}-{{ env }}"
+    spec:
+      project: "{{ .project }}"
+      source:
+        chart: "{{ .chart }}"
+        repoURL: "{{ .repoURL }}"
+        targetRevision: "{{ .targetrevision }}"
+        path: "{{ index .directories 0 }}"
+        helm:
+          valuesFrom: 
+            - "clusters/{{ .tenant }}/{{ .env }}/values/{{ .app }}.yml"
+      destination:
+        server: "{{ .url }}"
+        namespace: "{{ namespace }}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: 10
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 3m

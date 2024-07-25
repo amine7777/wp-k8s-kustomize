@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: oleole-project
+  namespace: argocd
+spec:
+  description: Development Project OleOle
+  sourceRepos:
+    - 'https://github.com/amine7777/wp-k8s-kustomize.git'
+  destinations:
+    - namespace: '*'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
