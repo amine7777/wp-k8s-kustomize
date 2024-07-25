@@ -33,13 +33,18 @@ spec:
       name: "{{ .app }}-{{ .env }}"
     spec:
       project: "{{ .project }}"
-      source:
-        chart: "{{ .chart }}"
-        repoURL: "{{ .repoURL }}"
-        targetRevision: "{{ .targetRevision }}"
-        helm:
-          valueFiles:
-            - "clusters/{{ .tenant }}/{{ .env }}/values/{{ .app }}.yml"
+      sources:
+        - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+          targetRevision: HEAD
+          path: clusters/{{ .tenant }}/{{ .env }}/values
+          ref: mytenantvalues
+      
+        - repoURL: "{{ .repoURL }}"
+          chart: "{{ .chart }}"
+          targetRevision: "{{ .targetRevision }}"
+          helm:
+            valueFiles:
+              - $mytenantvalues/{{ .app }}.yml"
       destination:
         server: "{{ .url }}"
         namespace: "{{ .namespace }}"
