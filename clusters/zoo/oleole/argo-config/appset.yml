@@ -45,15 +45,15 @@ spec:
             project: core
             namespace: system
 
-          # - app: tyk
-          #   tenant: zoo
-          #   env: oleole
-          #   url: 'https://kubernetes.default.svc'
-          #   chart: tyk-operator
-          #   repoURL: https://helm.tyk.io/public/helm/charts/
-          #   targetRevision: 0.18.10
-          #   project: core
-          #   namespace: system
+          - app: tyk
+            tenant: zoo
+            env: oleole
+            url: 'https://kubernetes.default.svc'
+            chart: tyk-operator
+            repoURL: https://helm.tyk.io/public/helm/charts/
+            targetRevision: 0.18.10
+            project: core
+            namespace: system
   template:
     metadata:
       name: "{{ .app }}"
@@ -64,8 +64,7 @@ spec:
 
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
-          path: "clusters/{{ .tenant }}/{{ .env }}/argo-config"
-          ref: values
+          path: "clusters/{{ .tenant }}/{{ .env }}"
 
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
@@ -76,7 +75,7 @@ spec:
           targetRevision: "{{ .targetRevision }}"
           helm:
             valueFiles:
-              - '$values/clusters/{{ .tenant }}/{{ .env }}/{{ .app }}.yml'
+              - '$values/clusters/{{ .tenant }}/{{ .env }}/values/{{ .app }}.yml'
 
       destination:
         server: "{{ .url }}"
