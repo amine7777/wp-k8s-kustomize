@@ -7,11 +7,11 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-    - git:
-      repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-      revision: HEAD
-      directories:
-      - path: clusters/zoo/oleole/*
+    # - git:
+    #   repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+    #   revision: HEAD
+    #   directories:
+    #   - path: clusters/zoo/oleole/*
 
     - list:
         elements:
