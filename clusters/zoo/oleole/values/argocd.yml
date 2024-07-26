@@ -18,7 +18,7 @@ configs:
       name: AzureAD
       issuer: https://login.microsoftonline.com/596b10c9-eb4d-49d8-954b-a9a1ca4b5750/v2.0
       clientID: 455f54e4-9665-4b69-85b1-640ebd2e08c0
-      clientSecret: $argocd-oidc-secrets:oidc.azure.clientSecret
+      clientSecret: $argocd-oidc-secret:oidc.azure.clientSecret
       requestedIDTokenClaims:
         groups:
           essential: true
