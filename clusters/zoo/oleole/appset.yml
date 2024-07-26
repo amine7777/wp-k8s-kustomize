@@ -64,7 +64,8 @@ spec:
 
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
-          path: "clusters/{{ .tenant }}/{{ .env }}"
+          directories:
+            - "clusters/{{ .tenant }}/{{ .env }}"
           ref: values
     
         - repoURL: "{{ .repoURL }}"
