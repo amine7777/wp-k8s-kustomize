@@ -64,8 +64,7 @@ spec:
 
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
-          directories:
-            - "clusters/{{ .tenant }}/{{ .env }}/argo-config"
+          path: "clusters/{{ .tenant }}/{{ .env }}/argo-config"
           ref: values
 
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
