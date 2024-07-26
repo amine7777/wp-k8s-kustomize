@@ -31,11 +31,11 @@ configs:
 
   rbac:
       create: true
-      policy.default: role:readonly
+      policy.default: role:org-admin
       policy.csv: |
         p, role:org-admin, *, *, */*, allow
         g, 'e32d0fb2-2248-4f40-97bf-5aa48bd5c423' , role:org-admin
   
 
-
+ 
 
