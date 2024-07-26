@@ -7,7 +7,7 @@ configs:
     }
     img.sidebar__logo__character {
        width: 60px !important;
-       content: url("https://user-images.githubusercontent.com/2389292/264784405-1e7e5902-d48f-440d-98f4-44028f4bd90e.png") !important;
+       content: url("https://avatars.githubusercontent.com/u/2499066") !important;
     }
 
   cm:
@@ -37,5 +37,5 @@ configs:
         g, 'e32d0fb2-2248-4f40-97bf-5aa48bd5c423' , role:org-admin
   
 
-  
+
 
