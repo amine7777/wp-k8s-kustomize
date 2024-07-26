@@ -7,6 +7,12 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
+    - git:
+      repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+      revision: HEAD
+      directories:
+      - path: clusters/zoo/oleole/*
+
     - list:
         elements:
           - app: external-secrets
@@ -58,6 +64,7 @@ spec:
 
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
+          path: "clusters/{{ .tenant }}/{{ .env }}"
           ref: values
     
         - repoURL: "{{ .repoURL }}"
@@ -65,7 +72,7 @@ spec:
           targetRevision: "{{ .targetRevision }}"
           helm:
             valueFiles:
-              - '$values/clusters/{{ .tenant }}/{{ .env }}/values/{{ .app }}.yml'
+              - '$values/{{ .app }}.yml'
       destination:
         server: "{{ .url }}"
         namespace: "{{ .namespace }}"
