@@ -21,7 +21,7 @@ repositories:
 
 releases:
 - name: external-secrets
-  chart: external-secrets-operator/external-secrets
+  chart: external-secrets/external-secrets
   namespace: system
   version: 0.9.20
   values:
