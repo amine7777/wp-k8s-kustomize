@@ -38,16 +38,28 @@ spec:
             targetRevision: 1.15.1
             project: core
             namespace: system
+
+          - app: tyk
+            tenant: zoo
+            env: oleole
+            url: 'https://kubernetes.default.svc'
+            chart: tyk-operator
+            repoURL: https://helm.tyk.io/public/helm/charts/
+            targetRevision: 0.18.10
+            project: core
+            namespace: system
   template:
     metadata:
       name: "{{ .app }}"
+
     spec:
       project: core
       sources:
+
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
           ref: values
-      
+    
         - repoURL: "{{ .repoURL }}"
           chart: "{{ .chart }}"
           targetRevision: "{{ .targetRevision }}"
