@@ -9,6 +9,7 @@ spec:
     - 'https://github.com/amine7777/wp-k8s-kustomize.git'
     - 'https://argoproj.github.io/argo-helm'
     - 'https://charts.jetstack.io'
+    - 'https://charts.external-secrets.io'
   destinations:
     - namespace: '*'
       server: '*'
