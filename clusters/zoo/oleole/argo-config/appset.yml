@@ -17,18 +17,12 @@ spec:
 
           - list:
               elementsYaml: "{{ .key.components | toJson }}"
-
   template:
     metadata:
       name: "{{ .app }}"
     spec:
       project: core
       sources:
-        - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-          targetRevision: HEAD
-          path: "{{ .path }}"
-          ref: argocd-config
-
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
           ref: values
