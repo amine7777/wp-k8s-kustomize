@@ -10,7 +10,7 @@ spec:
     - 'https://argoproj.github.io/argo-helm'
     - 'https://charts.jetstack.io'
     - 'https://charts.external-secrets.io'
-    - 'https://helm.tyk.io/public/helm/charts/'
+    - 'https://helm.tyk.io/public/helm/charts'
   destinations:
     - namespace: '*'
       server: '*'
