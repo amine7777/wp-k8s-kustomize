@@ -49,7 +49,7 @@ spec:
             tenant: zoo
             env: oleole
             url: 'https://kubernetes.default.svc'
-            chart: tyk-operator
+            chart: tyk-helm
             repoURL: https://helm.tyk.io/public/helm/charts
             targetRevision: 0.18.10
             project: core
