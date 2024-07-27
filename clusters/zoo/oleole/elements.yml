@@ -7,7 +7,7 @@ key:
       targetRevision: 1.15.1
       project: core
       namespace: system
-
+      path: null
 
     - app: tyk
       url: 'https://kubernetes.default.svc'
@@ -16,6 +16,7 @@ key:
       targetRevision: 0.18.0
       project: core
       namespace: system
+      path: null
 
 
     - app: argocd
@@ -35,3 +36,4 @@ key:
       targetRevision: 0.9.20
       project: core
       namespace: system
+      path: null
