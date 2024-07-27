@@ -24,17 +24,16 @@ key:
       project: core
       namespace: argocd
 
-    # - app: argocd-config
-    #   url: 'https://kubernetes.default.svc'
-    #   chart: ""
-    #   repoURL: 'https://argoproj.github.io/argo-helm'
-    #   targetRevision: 7.3.11
-    #   project: core
-    #   namespace: argocd
+    - app: argocd-config
+      url: 'https://kubernetes.default.svc'
+      gitRepoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+      gitTargetRevision: HEAD
+      gitPath: clusters/zoo/oleole/argo-config
+      project: core
+      namespace: argocd
+     
 
     - app: external-secrets
-      tenant: zoo
-      env: oleole
       url: 'https://kubernetes.default.svc'
       chart: external-secrets
       repoURL: "https://charts.external-secrets.io"

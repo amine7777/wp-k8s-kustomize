@@ -23,10 +23,15 @@ spec:
       name: "{{ .app }}"
     spec:
       project: core
+      source:
+        repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+        targetRevision: HEAD
+        ref: values
+
       sources:
-        - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-          targetRevision: HEAD
-          ref: values
+        - repoURL: "{{ .gitRepoURL }}"
+          targetRevision: "{{ .gitTargetRevision}}"
+          path: "{{ .gitPath }}"
     
         - repoURL: "{{ .repoURL }}"
           chart: "{{ .chart }}"
