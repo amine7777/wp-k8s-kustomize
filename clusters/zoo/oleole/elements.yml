@@ -8,13 +8,13 @@ key:
       project: core
       namespace: system
 
-    - app: tyk
-      url: 'https://kubernetes.default.svc'
-      chart: tyk-operator
-      repoURL: https://helm.tyk.io/public/helm/charts
-      targetRevision: 0.18.0
-      project: core
-      namespace: system
+    # - app: tyk
+    #   url: 'https://kubernetes.default.svc'
+    #   chart: tyk-operator
+    #   repoURL: https://helm.tyk.io/public/helm/charts
+    #   targetRevision: 0.18.0
+    #   project: core
+    #   namespace: system
 
     - app: argocd
       url: 'https://kubernetes.default.svc'
