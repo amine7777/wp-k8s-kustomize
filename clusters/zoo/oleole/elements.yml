@@ -7,7 +7,7 @@ key:
       targetRevision: 1.15.1
       project: core
       namespace: system
-      path: null
+      path: "clusters/zoo/oleole/argocd-config"
 
     - app: tyk
       url: 'https://kubernetes.default.svc'
@@ -16,7 +16,7 @@ key:
       targetRevision: 0.18.0
       project: core
       namespace: system
-      path: null
+      path: "clusters/zoo/oleole/argocd-config"
 
 
     - app: argocd
@@ -36,4 +36,4 @@ key:
       targetRevision: 0.9.20
       project: core
       namespace: system
-      path: null
+      path: "clusters/zoo/oleole/argocd-config"
