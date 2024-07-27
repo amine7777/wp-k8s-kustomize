@@ -23,15 +23,15 @@ spec:
       name: "{{ .app }}"
     spec:
       project: core
-      source:
-        repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-        targetRevision: HEAD
-        ref: values
-
       sources:
-        - repoURL: "{{ .gitRepoURL }}"
-          targetRevision: "{{ .gitTargetRevision}}"
-          path: "{{ .gitPath }}"
+        - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+          targetRevision: HEAD
+          path: "{{ .Path }}"
+          ref: argocd-config
+
+        - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+          targetRevision: HEAD
+          ref: values
     
         - repoURL: "{{ .repoURL }}"
           chart: "{{ .chart }}"
