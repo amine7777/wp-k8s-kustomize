@@ -14,8 +14,6 @@ server:
           - name: EXTENSION_CHECKSUM_URL
             value: https://github.com/mziyabo/argocd-trivy-extension/releases/download/v0.2.0/extension-trivy_checksums.txt
 
-
-
 configs:
   styles: |
     .sidebar {
