@@ -14,7 +14,8 @@ spec:
               revision: HEAD
               files:
               - path: "clusters/zoo/oleole/elements.yml"
-              - path: "clusters/zoo/oleole/argocd-config/*
+              - path: "clusters/zoo/oleole/argocd-config/*"
+            
 
           - list:
               elementsYaml: "{{ .key.components | toJson }}"
