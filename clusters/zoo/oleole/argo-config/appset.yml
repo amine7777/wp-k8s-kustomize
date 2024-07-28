@@ -62,7 +62,7 @@ spec:
 
           - list:
               elements:
-                - app: argocd-config
+                - app: argoconf
                   url: 'https://kubernetes.default.svc'
                   path:  "clusters/zoo/oleole/argocd-config"
                   repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
