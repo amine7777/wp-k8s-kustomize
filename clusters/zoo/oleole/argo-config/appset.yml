@@ -69,6 +69,15 @@ spec:
                   targetRevision: HEAD
                   project: core
                   namespace: system
+
+                - app: wordpress
+                  url: 'https://kubernetes.default.svc'
+                  path:  "apps/bases/wordpress"
+                  repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+                  targetRevision: HEAD
+                  project: core
+                  namespace: system
+
               template:
                 metadata: {}
                 spec:
