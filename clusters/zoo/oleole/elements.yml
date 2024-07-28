@@ -32,3 +32,10 @@ key:
       project: core
       namespace: system
 
+    - app: trivy-operator
+      url: 'https://kubernetes.default.svc'
+      chart: trivy-operator
+      repoURL: "https://aquasecurity.github.io/helm-charts"
+      targetRevision: 0.24.1
+      project: core
+      namespace: system
