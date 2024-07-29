@@ -33,7 +33,7 @@ spec:
           path: '{{.gitPath:}}'
           helm:
             valueFiles:
-              - '$values/{{.values}}'
+              - '$values/{{.valuesPath}}'
       destination:
         server: '{{.url}}'
         namespace: '{{.namespace}}'
