@@ -3,12 +3,10 @@ key:
     - app: cert-manager
       url: 'https://kubernetes.default.svc'
       chart: cert-manager
-      path: ""
       repoURL: 'https://charts.jetstack.io'
       targetRevision: 1.15.1
       project: core
       namespace: system
-
     # - app: wordpress
     #   url: 'https://kubernetes.default.svc'
     #   chart: ""
