@@ -1,49 +1,33 @@
 key:
   components:
-    - name: component1
-      chart: podinfo
-      version: "6.3.2"
-      releaseName: component1
-      repoUrl: "https://stefanprodan.github.io/podinfo"
-      namespace: component1
-    - name: component2
-      chart: podinfo
-      version: "6.3.3"
-      releaseName: component2
-      repoUrl: "ghcr.io/stefanprodan/charts"
-      namespace: component2
+    - app: cert-manager
+      url: 'https://kubernetes.default.svc'
+      chart: cert-manager
+      repoURL: 'https://charts.jetstack.io'
+      targetRevision: 1.15.1
+      project: core
+      namespace: system
 
+    - app: argocd
+      url: 'https://kubernetes.default.svc'
+      chart: argo-cd
+      repoURL: 'https://argoproj.github.io/argo-helm'
+      targetRevision: 7.3.11
+      project: core
+      namespace: argocd
 
-# key:
-#   components:
-#     - app: cert-manager
-#       url: 'https://kubernetes.default.svc'
-#       chart: cert-manager
-#       repoURL: 'https://charts.jetstack.io'
-#       targetRevision: 1.15.1
-#       project: core
-#       namespace: system
+    - app: external-secrets
+      url: 'https://kubernetes.default.svc'
+      chart: external-secrets
+      repoURL: "https://charts.external-secrets.io"
+      targetRevision: 0.9.20
+      project: core
+      namespace: system
 
-#     - app: argocd
-#       url: 'https://kubernetes.default.svc'
-#       chart: argo-cd
-#       repoURL: 'https://argoproj.github.io/argo-helm'
-#       targetRevision: 7.3.11
-#       project: core
-#       namespace: argocd
-
-#     - app: external-secrets
-#       url: 'https://kubernetes.default.svc'
-#       chart: external-secrets
-#       repoURL: "https://charts.external-secrets.io"
-#       targetRevision: 0.9.20
-#       project: core
-#       namespace: system
-
-#     - app: trivy-operator
-#       url: 'https://kubernetes.default.svc'
-#       chart: trivy-operator
-#       repoURL: "https://aquasecurity.github.io/helm-charts"
-#       targetRevision: 0.24.1
-#       project: core
-#       namespace: system
+    - app: trivy-operator
+      url: 'https://kubernetes.default.svc'
+      chart: trivy-operator
+      repoURL: "https://aquasecurity.github.io/helm-charts"
+      targetRevision: 0.24.1
+      project: core
+      namespace: system
