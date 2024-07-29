@@ -30,9 +30,10 @@ spec:
         - repoURL: '{{.repoURL}}'
           chart: '{{.chart}}'
           targetRevision: '{{.targetRevision}}'
+          path: '{{.path}}'
           helm:
             valueFiles:
-              - '$values/clusters/zoo/oleole/values/{{.app}}.yml'
+              - '{{.values}}'
       destination:
         server: '{{.url}}'
         namespace: '{{.namespace}}'
