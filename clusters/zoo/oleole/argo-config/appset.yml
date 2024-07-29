@@ -12,15 +12,16 @@ spec:
           - git:
               repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
               revision: HEAD
-              path: "clusters/zoo/oleole/argocd-config"
-            
+              files:
+              - path: "clusters/zoo/oleole/argocd-config/elements.yml"
+
           - list:
               elementsYaml: "{{ .key.components | toJson }}"
   template:
     metadata:
-      name: "{{ .app }} | default hola "
+      name: "{{ .app }}"
     spec:
-      project: 
+      project: core
       sources:
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
@@ -29,10 +30,9 @@ spec:
         - repoURL: "{{ .repoURL }}"
           chart: "{{ .chart }}"
           targetRevision: "{{ .targetRevision }}"
-          path: {{ .path }}
           helm:
             valueFiles:
-              - '$values/clusters/zoo/oleole/values/{{ .app }}.yml | default "" '
+              - '$values/clusters/zoo/oleole/values/{{ .app }}.yml'
       destination:
         server: "{{ .url }}"
         namespace: "{{ .namespace }}"
