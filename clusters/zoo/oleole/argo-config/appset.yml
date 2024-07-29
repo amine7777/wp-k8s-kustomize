@@ -5,22 +5,24 @@ metadata:
   namespace: argocd
 spec:
   goTemplate: true
-  goTemplateOptions: ["missingkey=default"]
+  goTemplateOptions: ["missingkey=error"]
+
   generators:
-    - matrix:
-        generators:
-          - git:
-              repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-              revision: HEAD
-              files:
-              - path: "clusters/zoo/oleole/argocd-config/elements.yml"
-          - list:
-              elementsYaml: "{{ .key.components | toJson }}"
+  - matrix:
+      generators:
+      - git:
+          repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+          revision: HEAD
+          files:
+          - path: clusters/zoo/oleole/argocd-config/elements.yml
+      - list:
+          elementsYaml: "{{ .key.components | toJson }}"
+
   template:
     metadata:
       name: "{{ .app }}"
     spec:
-      project: core
+      project: "{{ .project }}"
       sources:
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
