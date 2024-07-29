@@ -8,7 +8,7 @@ key:
       project: core
       namespace: system
       path: ""
-      values: '$values/clusters/zoo/oleole/values/{{.app}}.yml'
+      values: 'clusters/zoo/oleole/values/cert-manager.yml'
 
     - app: wordpress
       url: 'https://kubernetes.default.svc'
@@ -28,7 +28,7 @@ key:
       project: core
       namespace: argocd
       path: ""
-      values: '$values/clusters/zoo/oleole/values/{{.app}}.yml'
+      values: 'clusters/zoo/oleole/values/argocd.yml'
 
 
     # - app: external-secrets

@@ -33,7 +33,7 @@ spec:
           path: '{{.path}}'
           helm:
             valueFiles:
-              - '{{.values}}'
+              - '$values/{{.values}}'
       destination:
         server: '{{.url}}'
         namespace: '{{.namespace}}'
