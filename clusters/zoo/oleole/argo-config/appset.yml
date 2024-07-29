@@ -17,78 +17,6 @@ spec:
         - list:
             elementsYaml: "{{ .key.components | toJson }}"
 
-          # - list:
-          #     elements:
-          #       - app: cert-manager
-          #         url: 'https://kubernetes.default.svc'
-          #         chart: cert-manager
-          #         repoURL: 'https://charts.jetstack.io'
-          #         targetRevision: 1.15.1
-          #         project: core
-          #         namespace: system
-
-          #       # - app: tyk
-          #       #   url: 'https://kubernetes.default.svc'
-          #       #   chart: tyk-operator
-          #       #   repoURL: https://helm.tyk.io/public/helm/charts
-          #       #   targetRevision: 0.18.0
-          #       #   project: core
-          #       #   namespace: system
-
-          #       - app: argocd
-          #         url: 'https://kubernetes.default.svc'
-          #         chart: argo-cd
-          #         repoURL: 'https://argoproj.github.io/argo-helm'
-          #         targetRevision: 7.3.11
-          #         project: core
-          #         namespace: argocd
-
-          #       - app: external-secrets
-          #         url: 'https://kubernetes.default.svc'
-          #         chart: external-secrets
-          #         repoURL: "https://charts.external-secrets.io"
-          #         targetRevision: 0.9.20
-          #         project: core
-          #         namespace: system
-
-          #       - app: trivy-operator
-          #         url: 'https://kubernetes.default.svc'
-          #         chart: trivy-operator
-          #         repoURL: "https://aquasecurity.github.io/helm-charts"
-          #         targetRevision: 0.24.1
-          #         project: core
-          #         namespace: system
-
-          # - list:
-          #     elements:
-                # - app: argoconf
-                #   url: 'https://kubernetes.default.svc'
-                #   path:  "clusters/zoo/oleole/argocd-config"
-                #   repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-                #   targetRevision: HEAD
-                #   project: core
-                #   namespace: system
-
-              #   - app: wordpress
-              #     url: 'https://kubernetes.default.svc'
-              #     path:  "apps/bases/wordpress"
-              #     repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-              #     targetRevision: HEAD
-              #     project: core
-              #     namespace: system
-
-              # template:
-              #   metadata: 
-              #     name: "{{ .app }}"
-              #   spec:
-              #     project: core
-              #     source:
-              #       targetRevision: HEAD
-              #       repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-              #       path: "apps/bases/wordpress"
-              #     destination:
-              #       server: "{{ .url }}"
-              #       namespace: "{{ .namespace }}"
   template:
     metadata:
       name: "{{ .app }}"
@@ -98,10 +26,6 @@ spec:
         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           targetRevision: HEAD
           ref: values
-
-        # - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-        #   targetRevision: HEAD
-        #   path: '{{ .path }}'
     
         - repoURL: "{{ .repoURL }}"
           chart: "{{ .chart }}"
@@ -109,8 +33,6 @@ spec:
           helm:
             valueFiles:
               - '$values/clusters/zoo/oleole/values/{{ .app }}.yml'
-
-
       destination:
         server: "{{ .url }}"
         namespace: "{{ .namespace }}"
