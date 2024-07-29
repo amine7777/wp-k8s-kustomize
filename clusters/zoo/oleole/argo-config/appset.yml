@@ -1,61 +1,8 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: ApplicationSet
-# metadata:
-#   name: main-oleole
-#   namespace: argocd
-# spec:
-#   goTemplate: true
-#   goTemplateOptions: ["missingkey=error"]
-#   generators:
-#     - matrix:
-#         generators:
-#           - git:
-#               repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-#               revision: HEAD
-#               files:
-#               - path: "clusters/zoo/oleole/argocd-config/elements.yml"
-
-#           - list:
-#               elementsYaml: "{{ .key.components | toJson }}"
-#   template:
-#     metadata:
-#       name: "{{ .app }}"
-#     spec:
-#       project: core
-#       sources:
-#         - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-#           targetRevision: HEAD
-#           ref: values
-    
-#         - repoURL: "{{ .repoURL }}"
-#           chart: "{{ .chart }}"
-#           targetRevision: "{{ .targetRevision }}"
-#           helm:
-#             valueFiles:
-#               - '$values/clusters/zoo/oleole/values/{{ .app }}.yml'
-#       destination:
-#         server: "{{ .url }}"
-#         namespace: "{{ .namespace }}"
-#       syncPolicy:
-#         automated:
-#           prune: true
-#           selfHeal: true
-#         syncOptions:
-#           - CreateNamespace=true
-#           - PrunePropagationPolicy=foreground
-#           - PruneLast=true
-#           - ServerSideApply=true
-#         retry:
-#           limit: 7
-#           backoff:
-#             duration: 10s
-#             factor: 2
-#             maxDuration: 3m
 
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: elementsyaml
+  name: main
   namespace: argocd
 spec:
   goTemplate: true
@@ -69,29 +16,34 @@ spec:
           files:
           - path: clusters/zoo/oleole/argocd-config/elements.yml
       - list:
-          elementsYaml: "{{ .key.components | toJson }}"
-          
+          elementsYaml: "{{ .key.components | toJson }}"      
   template:
     metadata:
       name: '{{.app}}'
     spec:
-      project: '{{.project}}'
+      project: core
+      sources:
+        - repoURL: '{{.repoURL}}'
+          chart: '{{.chart}}'
+          targetRevision: '{{.version}}'
+          # helm:
+          #   valueFiles:
+          #     - '$values/clusters/zoo/oleole/values/{{.app}}.yml'
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: '{{.namespace}}'
       syncPolicy:
         automated:
-          selfHeal: true    
+          prune: true
+          selfHeal: true
         syncOptions:
-        - CreateNamespace=true
-      sources:
-        - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-          targetRevision: HEAD
-          ref: values
-    
-        - repoURL: '{{ .repoURL }}'
-          chart: '{{.chart }}'
-          targetRevision: '{{ .targetRevision }}'
-          helm:
-            valueFiles:
-              - '$values/clusters/zoo/oleole/values/{{.app}}.yml'
-      destination:
-        server: '{{.url}}'
-        namespace: '{{.namespace}}'
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - PruneLast=true
+          - ServerSideApply=true
+        retry:
+          limit: 7
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 3m
