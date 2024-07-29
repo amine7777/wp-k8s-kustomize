@@ -79,14 +79,17 @@ spec:
                   namespace: system
 
               template:
-                metadata: {}
+                metadata: 
+                  name: "{{ .app }}"
                 spec:
                   project: core
                   source:
                     targetRevision: HEAD
                     repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-                    path: "{{ .path }}"
-                  destination: {}
+                    path: "apps/bases/wordpress"
+                  destination:
+                    server: "{{ .url }}"
+                    namespace: "{{ .namespace }}"
   template:
     metadata:
       name: "{{ .app }}"
