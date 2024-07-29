@@ -7,7 +7,7 @@ key:
       targetRevision: 1.15.1
       project: core
       namespace: system
-      path: ""
+      gitPath: ""
       values: 'clusters/zoo/oleole/values/cert-manager.yml'
 
     - app: mysql
@@ -17,7 +17,7 @@ key:
       targetRevision: HEAD
       project: core
       namespace: system
-      path: "apps/bases/mysql"
+      gitPath: "apps/bases/mysql"
       values: ""
 
     - app: argocd
@@ -27,7 +27,7 @@ key:
       targetRevision: 7.3.11
       project: core
       namespace: argocd
-      path: ""
+      gitPath: ""
       values: 'clusters/zoo/oleole/values/argocd.yml'
 
     - app: external-secrets
@@ -37,7 +37,7 @@ key:
       targetRevision: 0.9.20
       project: core
       namespace: system
-      path: ""
+      gitPath: ""
       values: 'clusters/zoo/oleole/values/external-secrets.yml'
 
     # - app: trivy-operator

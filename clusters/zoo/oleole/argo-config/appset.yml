@@ -30,7 +30,7 @@ spec:
         - repoURL: '{{.repoURL}}'
           chart: '{{.chart}}'
           targetRevision: '{{.targetRevision}}'
-          path: '{{.path}}'
+          path: '{{.gitPath:}}'
           helm:
             valueFiles:
               - '$values/{{.values}}'
