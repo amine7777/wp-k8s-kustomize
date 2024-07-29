@@ -10,7 +10,7 @@ key:
       path: ""
       values: 'clusters/zoo/oleole/values/cert-manager.yml'
 
-    - app: wordpress
+    - app: mysql
       url: 'https://kubernetes.default.svc'
       chart: ""
       repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
