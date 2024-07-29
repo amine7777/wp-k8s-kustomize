@@ -1,8 +1,7 @@
-
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: main
+  name: elements
   namespace: argocd
 spec:
   goTemplate: true
@@ -11,39 +10,28 @@ spec:
   - matrix:
       generators:
       - git:
-          repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
+          repoURL: https://github.com/argoproj/argo-cd.git
           revision: HEAD
           files:
-          - path: clusters/zoo/oleole/argocd-config/elements.yml
+          - path: applicationset/examples/list-generator/list-elementsYaml-example.yaml
       - list:
-          elementsYaml: "{{ .key.components | toJson }}"      
+          elementsYaml: "{{ .key.components | toJson }}"
   template:
     metadata:
-      name: '{{.app}}'
+      name: '{{.name}}'
     spec:
-      project: core
-      sources:
-        - repoURL: '{{.repoURL}}'
-          chart: '{{.chart}}'
-          targetRevision: '{{.version}}'
-          # helm:
-          #   valueFiles:
-          #     - '$values/clusters/zoo/oleole/values/{{.app}}.yml'
-      destination:
-        server: 'https://kubernetes.default.svc'
-        namespace: '{{.namespace}}'
+      project: default
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          selfHeal: true    
         syncOptions:
-          - CreateNamespace=true
-          - PrunePropagationPolicy=foreground
-          - PruneLast=true
-          - ServerSideApply=true
-        retry:
-          limit: 7
-          backoff:
-            duration: 10s
-            factor: 2
-            maxDuration: 3m
+        - CreateNamespace=true        
+      sources:
+        - chart: '{{.chart}}'
+          repoURL: '{{.repoUrl}}'
+          targetRevision: '{{.version}}'
+          helm:
+            releaseName: '{{.releaseName}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{.namespace}}'
