@@ -12,14 +12,14 @@ spec:
 
     - repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
       targetRevision: HEAD
-      path: clusters/zoo/oleole/arg-config
+      path: clusters/zoo/oleole/argo-config
 
     - repoURL: 'https://argoproj.github.io/argo-helm'
       targetRevision: 7.3.11
       chart: argo-cd
       helm: 
         valueFiles:
-          - '$values/clusters/zoo/oleole/argocd.yml'
+          - '$values/clusters/zoo/oleole/values/argocd.yml'
     
   destination:
     server: 'https://kubernetes.default.svc'
