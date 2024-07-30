@@ -11,6 +11,7 @@ spec:
     - 'https://charts.jetstack.io'
     - 'https://charts.external-secrets.io'
     - 'https://aquasecurity.github.io/helm-charts'
+    - 'https://stefanprodan.github.io/podinfo'
   destinations:
     - namespace: '*'
       server: '*'

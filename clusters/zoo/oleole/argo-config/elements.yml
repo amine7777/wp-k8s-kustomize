@@ -15,7 +15,7 @@ key:
       targetRevision: HEAD
       project: core
       namespace: system
-      gitPath: "apps/bases/mysql"
+      gitPath: apps/bases/mysql
 
     - app: argocd
       url: 'https://kubernetes.default.svc'

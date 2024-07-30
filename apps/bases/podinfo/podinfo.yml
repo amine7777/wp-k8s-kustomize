@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: trivy-operator
+  name: podinfo
   namespace: system
 spec:
   project: default
   source:
-    chart: trivy-operator
-    repoURL: https://aquasecurity.github.io/helm-charts/
-    targetRevision: 0.24.1
+    chart: podinfo
+    repoURL: "https://stefanprodan.github.io/podinfo"
+    targetRevision: "6.3.2"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: system
