@@ -84,6 +84,18 @@ spec:
             project: core
             namespace: argocd
 
+          - app: podinfo-public-chart
+            url: 'https://kubernetes.default.svc'
+            repoURL: 'https://github.com/stefanprodan/podinfo/tree/master/charts/podinfo.git'
+            targetRevision: HEAD
+            chart: podinfo
+            valueFiles:
+              - '$values/clusters/zoo/oleole/values/external-secrets.yml'
+              
+            path: 'charts/'
+            project: core
+            namespace: argocd
+
           - app: cert-manager
             url: 'https://kubernetes.default.svc'
             chart: cert-manager
