@@ -79,7 +79,7 @@ spec:
           - app: podinfo
             url: 'https://kubernetes.default.svc'
             repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
-            targetRevision: master
+            targetRevision: HEAD
             path: 'apps/bases/podinfo'
             project: core
             namespace: argocd
