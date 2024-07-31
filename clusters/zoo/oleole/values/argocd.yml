@@ -50,7 +50,7 @@ configs:
       policy.default: role:org-admin
       policy.csv: |
         # Define groups
-        g, 'e32d0fb2-2248-4f40-97bf-5aa48bd5c423' , role:admins
+        g, 'akabusiness001@gmail.com' , role:admins
         g, 'e32d0fb2-2248-4f40-97bf-5aa48bd5c424' , role:maintainers
         g, 'e32d0fb2-2248-4f40-97bf-5aa48bd5c425' , role:developers
         g, 'e32d0fb2-2248-4f40-97bf-5aa48bd5c426' , role:sync-only
