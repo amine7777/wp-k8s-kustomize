@@ -48,6 +48,7 @@ configs:
   rbac:
       create: true
       policy.default: role:org-admin
+      scopes: '[groups, email]'
       policy.csv: |
         # Define groups
         g, 'akabusiness001@gmail.com' , role:admins
