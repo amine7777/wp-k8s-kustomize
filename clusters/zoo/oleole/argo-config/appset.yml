@@ -13,7 +13,7 @@ spec:
           repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           revision: HEAD
           files:
-          - path: clusters/zoo/oleole/argo-config/elements.yml
+          - path: '$values/clusters/zoo/oleole/argo-config/elements.yml'
       - list:
           elementsYaml: "{{ .key.components | toJson }}" 
 
