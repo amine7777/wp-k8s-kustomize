@@ -28,15 +28,15 @@ spec:
         namespace: '{{.namespace}}'
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          prune: '{{.syncPolicy.automated.prune | default "true" }}'
+          selfHeal: '{{.syncPolicy.automated.selfHeal | default "true" }}'
         syncOptions:
           - CreateNamespace=true
           - PrunePropagationPolicy=foreground
           - PruneLast=true
           - ServerSideApply=true
         retry:
-          limit: 7
+          limit: 10
           backoff:
             duration: 10s
             factor: 2

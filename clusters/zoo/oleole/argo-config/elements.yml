@@ -20,7 +20,7 @@ key:
       path: 'charts/'
       project: core
       namespace: argocd
-      
+
     # PUBLIC HELM CHART
     - app: cert-manager
       url: 'https://kubernetes.default.svc'
@@ -31,3 +31,6 @@ key:
       namespace: system
       valueFiles: 
         - '$values/clusters/zoo/oleole/values/cert-manager.yml'
+      syncPolicy:
+        automated:
+          selfHeal: false
