@@ -51,8 +51,8 @@ spec:
 
         - repoURL: '{{.repoURL}}'
           targetRevision: '{{.targetRevision}}'
-        {{- if .path }}
-          path: '{{.path}}'
+        {{- if .gitPath }}
+          path: '{{.gitPath}}'
         {{- end }}
         {{- if .chart }}
           chart: '{{.chart}}'
