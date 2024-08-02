@@ -37,5 +37,5 @@ key:
         syncOptions:
           - CreateNamespace=true
           - PrunePropagationPolicy=foreground
-          - PruneLast=true
-          - ServerSideApply=true
+          # - PruneLast=true
+          # - ServerSideApply=true
