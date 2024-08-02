@@ -26,22 +26,7 @@ spec:
       destination:
         server: '{{.url}}'
         namespace: '{{.namespace}}'
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: {{.syncPolicy.automated.selfHeal | default false}}
-        syncOptions:
-          - CreateNamespace=true
-          - PrunePropagationPolicy=foreground
-          - PruneLast=true
-          - ServerSideApply=true
-        retry:
-          limit: 10
-          backoff:
-            duration: 10s
-            factor: 2
-            maxDuration: 3m
-
+      syncPolicy: {}
   templatePatch: |
     spec:
       sources:
@@ -62,6 +47,21 @@ spec:
               - {{ $valueFile }}
             {{- end }}
         {{- end }}
+      syncPolicy:
+        automated:
+          prune: {{ .syncPolicy.automated.prune | default true }}
+          selfHeal: {{ .syncPolicy.automated.selfHeal | default true }}
+        syncOptions:
+          {{- range $option := $syncOptions }}
+          - {{ $option }}
+          {{- end }}
+        retry:
+          limit: {{ .syncPolicy.retry.limit | default 10 }}
+          backoff:
+            duration: {{ .syncPolicy.retry.backoff.duration | default "10s" }}
+            factor: {{ .syncPolicy.retry.backoff.factor | default 2 }}
+            maxDuration: {{ .syncPolicy.retry.backoff.maxDuration | default "3m" }}
+    
 
   
 

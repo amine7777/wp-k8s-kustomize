@@ -34,3 +34,8 @@ key:
       syncPolicy:
         automated:
           selfHeal: false
+        syncOptions:
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - PruneLast=true
+          - ServerSideApply=true
