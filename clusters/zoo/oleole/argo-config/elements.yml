@@ -33,7 +33,7 @@ key:
         - '$values/clusters/zoo/oleole/values/cert-manager.yml'
       syncPolicy:
         automated:
-          selfHeal: false
+          selfHeal: true
         syncOptions:
           - CreateNamespace=true
           - PrunePropagationPolicy=foreground
