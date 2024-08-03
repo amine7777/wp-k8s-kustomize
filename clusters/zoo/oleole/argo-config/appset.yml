@@ -13,7 +13,7 @@ spec:
           repoURL: 'https://github.com/amine7777/wp-k8s-kustomize.git'
           revision: HEAD
           files:
-          - path: 'clusters/zoo/oleole/argo-config/elements.yml'
+          - path: 'clusters/zoo/oleole/argo-config/elements.yml'k 
       - list:
           elementsYaml: "{{ .key.components | toJson }}" 
 
@@ -26,7 +26,21 @@ spec:
       destination:
         server: '{{.url}}'
         namespace: '{{.namespace}}'
-      syncPolicy: {}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - PruneLast=true
+          - ServerSideApply=true
+        retry:
+          limit: 10
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 3m
   templatePatch: |
     spec:
       sources:
@@ -47,24 +61,3 @@ spec:
               - {{ $valueFile }}
             {{- end }}
         {{- end }}
-       {{- if .synPolicy }}
-          syncPolicy:
-            automated:
-              prune: {{ .syncPolicy.automated.prune | default true }}
-              selfHeal: {{ .syncPolicy.automated.selfHeal | default true }}
-            syncOptions:
-              {{- range $option := .syncOptions }}
-              - {{ $option }}
-              {{- end }}
-            retry:
-              limit: {{ .syncPolicy.retry.limit | default 10 }}
-              backoff:
-                duration: {{ .syncPolicy.retry.backoff.duration | default "10s" }}
-                factor: {{ .syncPolicy.retry.backoff.factor | default 2 }}
-                maxDuration: {{ .syncPolicy.retry.backoff.maxDuration | default "3m" }}
-        {{- end }}
-    
-
-  
-
-
